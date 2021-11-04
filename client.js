@@ -17,6 +17,14 @@ const connect = function() {
   conn.on('connect', () => {
     console.log('Successfully connected to game server');
     conn.write("Name: RRR");
+  });
+
+  conn.on('connect', () => {
+    console.log('Say Message: ');
+    conn.write("Say: cupcakes");
+  });
+
+
 
     // setInterval(() => {
     //   conn.write("Move: up");
@@ -30,7 +38,7 @@ const connect = function() {
     //   conn.write("Move: left");
     // }, 350);
 
-  })
+  
 
   return conn;
 };

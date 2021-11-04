@@ -1,6 +1,9 @@
 const net = require('net');
 
-const setupInput = function () {
+let connection; // Stores the active TCP connection object.
+
+const setupInput = (conn) => {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -10,6 +13,7 @@ const setupInput = function () {
   return stdin;
 }
 
+
 const handleUserInput = function () {
   // on any input from stdin (standard input), output a "." to stdout
   const stdin = process.stdin;
@@ -18,6 +22,23 @@ const handleUserInput = function () {
   if (key === '\u0003') {
     process.exit();
   }
+
+  if (key === 'w') {
+    process.stdout.write("Move: up");
+  }
+
+  if (key === 'a') {
+    process.stdout.write('Move: left')
+  }
+
+  if (key === 's') {
+    process.stdout.write("Move: down");
+  }
+
+  if (key === 'd') {
+    process.stdout.write('Move: right')
+  }
+
 });
 };
 
